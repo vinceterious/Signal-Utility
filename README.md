@@ -2,11 +2,11 @@
 Signal class and utility to manipulated it
 
 To execute:
-mkdir build
-cd build
-cmake <path_to_main_git_project_dir>
-make
-./signalExample
+1) mkdir build
+2) cd build
+3) cmake <path_to_main_git_project_dir>
+4) make
+5) ./signalExample
 
 Example generated via ./signalExample:
 Following results on wav format signal:
