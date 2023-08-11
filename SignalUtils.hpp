@@ -5,10 +5,21 @@
 #include <fstream>
 #include <iostream>
 
-struct SignalUtils
+struct fill
 {
-public:
-    static void fill(const RawSignal& signal, CArray& output);
+    template<typename TabOfData>
+    void operator()(TabOfData&& output, const RawSignal& signal) const;
+};
+
+struct findLocalMinMax
+{
+    enum class MinOrMax : int
+    {
+        FindMin = -1,
+        FindMax = 1
+    };
+    template<typename TabOfData>
+    RawSignal operator()(const TabOfData&& __t, std::size_t derivativeOrder , MinOrMax minOrMax, double threshold) const;
 };
 
 template <char const *str>
@@ -64,15 +75,4 @@ struct smoothData
         return smoothedData;
     }
 
-};
-
-struct findLocalMinMax
-{
-    enum class MinOrMax : int
-    {
-        FindMin = -1,
-        FindMax = 1
-    };
-    template<typename TabOfData>
-    RawSignal operator()(const TabOfData&& __t, std::size_t derivativeOrder , MinOrMax minOrMax, double threshold) const;
 };

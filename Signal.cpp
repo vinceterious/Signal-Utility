@@ -6,7 +6,7 @@ namespace signal
 Signal::Signal(const RawSignal& input)
     : data{}
 {
-    SignalUtils::fill(input, data);
+    apply<fill>(*this, input);
 }
 
 Signal::Signal(const CArray& input)

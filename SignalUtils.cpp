@@ -43,8 +43,8 @@ namespace
 
 }
 
-
-void SignalUtils::fill(const RawSignal& signal, CArray& output)
+template<>
+void fill::operator()(CArray&& output, const RawSignal& signal) const
 {
     fill_impl(signal, output);
 } 
