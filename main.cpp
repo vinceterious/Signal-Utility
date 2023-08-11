@@ -18,6 +18,7 @@ int main()
 
     //FFT signal and log in file
     signal::apply<fft>(inputSignal);
+    signal::apply<toDb>(inputSignal);
     static const char fftSignal_string[] = "SignalFft.txt";
     signal::apply<dumpInfile<fftSignal_string>>(inputSignal);
 
@@ -26,11 +27,6 @@ int main()
     signal::Signal smoothed{smothedData};
     static const char smoothed_string[] = "SignalSmoothed.txt";
     signal::apply<dumpInfile<smoothed_string>>(smoothed);
-
-    //iFFT signal and log in file
-    signal::apply<ifft>(inputSignal);
-    static const char ifft_string[] = "SignalAfteriFft.txt";
-    signal::apply<dumpInfile<ifft_string>>(inputSignal);
 
     /* Next step:
     CArray signalFilter;
